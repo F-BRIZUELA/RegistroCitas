@@ -15,7 +15,7 @@ class CreateReservacitasTable extends Migration
     {
         Schema::create('reservacitas', function (Blueprint $table) {
             $table->id();
-            $table->string('nombres',60);
+            $table->string('nombre',60);
             $table->string('apellido',60);
             $table->string('num_cedula',60);
             $table->string('num_celular')->nullable();

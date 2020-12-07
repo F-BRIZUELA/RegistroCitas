@@ -10,7 +10,7 @@ use App\Http\Controllers\EspecialidadController;
 use App\Http\Controllers\EspecialistaController;
 use Illuminate\Http\Request;
 use App\Http\Controllers\PersonasController;
-
+use App\Http\Controllers\ReservaCitaController;
 
 /*
 |--------------------------------------------------------------------------
@@ -42,7 +42,7 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::middleware('auth')->group(function(){
 
 
-    Route::prefix('app')->group(function(){
+    Route::prefix('catalogos')->group(function(){
         Route::prefix('especialidad')->group(function(){
             Route::get('especialidad', [CatalogosController::class, 'getEspecialidades']);
             Route::get('', [EspecialidadController::class, 'index'])->name('especialidad');
@@ -52,9 +52,7 @@ Route::middleware('auth')->group(function(){
             Route::patch('{model}', [EspecialidadController::class, 'update'])->name('especiliadad.update');
             Route::delete('{model}', [EspecialidadController::class, 'destroy'])->name('especialidad.delete');
         });
-    });
 
-    Route::prefix('catalogos')->group(function(){
         Route::prefix('especialistas')->group(function(){
             Route::get('', [EspecialistaController::class, 'index'])->name('especialista');
             Route::get('add', [EspecialistaController::class, 'add'])->name('especialista.add');
@@ -63,9 +61,7 @@ Route::middleware('auth')->group(function(){
             Route::patch('{model}', [EspecialistaController::class, 'update'])->name('especialista.update');
             Route::delete('{model}', [EspecialistaController::class, 'destroy'])->name('especialista.delete');
         });
-    });
 
-    Route::prefix('catalogos')->group(function(){
         Route::prefix('agendas')->group(function(){
             Route::get('', [AgendaController::class, 'index'])->name('agenda');
             Route::get('add', [AgendaController::class, 'add'])->name('agenda.add');
@@ -76,16 +72,16 @@ Route::middleware('auth')->group(function(){
         });
     });
 
+    Route::prefix('app')->group(function(){
+            Route::get('reservacitas', [ReservaCitaController::class, 'reservacita']);
+            Route::get('', [ReservaCitaController::class, 'index'])->name('reservacita');
+            Route::get('add', [ReservaCitaController::class, 'add'])->name('reservacita.add');
+            Route::get('edit/{model}', [ReservaCitaController::class, 'show'])->name('reservacita.edit');
+            Route::post('', [ReservaCitaController::class, 'store'])->name('reservacita.store');
+            Route::patch('{model}', [ReservaCitaController::class, 'update'])->name('reservacita.update');
+    });
     Route::prefix('catalogos')->group(function(){
-        Route::prefix('colores')->group(function () {
-            Route::get('', [ColorController::class, 'index'])->name('color');
-            Route::get('add', [ColorController::class, 'add'])->name('color.add');
-            Route::get('edit/{model}', [ColorController::class, 'edit'])->name('color.edit');
-            Route::post('', [ColorController::class, 'store'])->name('color.store');
-            Route::patch('{model}', [ColorController::class, 'update'])->name('color.update');
-            Route::delete('{model}', [ColorController::class, 'destroy'])->name('color.delete');
-        });
-
+      
         Route::prefix('combustible')->group(function () {
             Route::get('', [CombustibleController::class, 'index'])->name('combustible');
             Route::get('add', [CombustibleController::class, 'add'])->name('combustible.add');
@@ -114,3 +110,6 @@ Route::middleware('auth')->group(function(){
         Route::get('etnias', [ApiAppsController::class, 'etnias']);
     });
 });
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

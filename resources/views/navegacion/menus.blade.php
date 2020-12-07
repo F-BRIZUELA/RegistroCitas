@@ -8,6 +8,7 @@
     </a>
     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
       <a class="dropdown-item" href="{!! route('especialidad') !!}">Especialidades</a>
+      <a class="dropdown-item" href="{!! route('especialista') !!}">Especialistas</a>
     </div>
   </li>
   <li class="nav-item dropdown">
@@ -15,7 +16,7 @@
       Registros
     </a>
     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-    <a class="dropdown-item" href="{!! route('reservaCitas') !!}">Reserva Citas</a>
+    <a class="dropdown-item" href="{!! route('reservacita') !!}">Reserva Citas</a>
     </div>
   </li>
   @endguest

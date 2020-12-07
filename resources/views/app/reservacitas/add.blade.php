@@ -5,11 +5,11 @@
 
         <div class="card border-primary">
             <div class="card-body">
-                <h4 class="card-title">Datos de la persona</h4>
+                <h4 class="card-title">Datos para la Reserva</h4>
                 <p class="card-text">
 
-                    {!! Form::open(['route' => 'persona.store']) !!}
-                    @include('app.personas.fieldsPersonas')
+                    {!! Form::open(['route' => 'reservacita.store']) !!}
+                    @include('app.reservacitas.fields')
                     {!! Form::submit('Guardar') !!}
                     {!! Form::close() !!}
                 </p>

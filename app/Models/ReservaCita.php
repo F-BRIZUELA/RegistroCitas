@@ -13,7 +13,7 @@ class ReservaCita extends Model
 
     //Definiendo los campos de la tabla
     protected $fillable = [
-        "nombres",
+        "nombre",
         "apellido",
         "num_cedula",
         "num_celular",
