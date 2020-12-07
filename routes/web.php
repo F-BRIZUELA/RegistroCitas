@@ -1,11 +1,13 @@
 <?php
 
+use App\Http\Controllers\AgendaController;
 use App\Http\Controllers\CatalogosController;
 use App\Http\Controllers\CombustibleController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ColorController;
 use App\Http\Controllers\ApiAppsController;
 use App\Http\Controllers\EspecialidadController;
+use App\Http\Controllers\EspecialistaController;
 use Illuminate\Http\Request;
 use App\Http\Controllers\PersonasController;
 
@@ -40,29 +42,37 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::middleware('auth')->group(function(){
 
 
-    Route::prefix('calalogos')->group(function(){
+    Route::prefix('app')->group(function(){
         Route::prefix('especialidad')->group(function(){
+            Route::get('especialidad', [CatalogosController::class, 'getEspecialidades']);
             Route::get('', [EspecialidadController::class, 'index'])->name('especialidad');
             Route::get('add', [EspecialidadController::class, 'add'])->name('especialidad.add');
             Route::get('edit/{model}', [EspecialidadController::class, 'show'])->name('especialidad.edit');
             Route::post('', [EspecialidadController::class, 'store'])->name('especialidad.store');
-            Route::patch('{model}', [EspecialidadController::class, 'update'])->name('especialidad.update');
+            Route::patch('{model}', [EspecialidadController::class, 'update'])->name('especiliadad.update');
             Route::delete('{model}', [EspecialidadController::class, 'destroy'])->name('especialidad.delete');
-        });
-
-        Route::prefix('catalogos')->group(function () {
-            Route::get('especialidad', [CatalogosController::class, 'getEspecialidades']);
         });
     });
 
-    Route::prefix('app')->group(function(){
-        Route::prefix('personas')->group(function(){
-            Route::get('', [PersonasController::class, 'index'])->name('persona');
-            Route::get('add', [PersonasController::class, 'add'])->name('persona.add');
-            Route::get('edit/{model}', [PersonasController::class, 'edit'])->name('persona.edit');
-            Route::post('', [PersonasController::class, 'store'])->name('persona.store');
-            Route::patch('{model}', [PersonasController::class, 'update'])->name('persona.update');
-            Route::delete('{model}', [PersonasController::class, 'destroy'])->name('persona.delete');
+    Route::prefix('catalogos')->group(function(){
+        Route::prefix('especialistas')->group(function(){
+            Route::get('', [EspecialistaController::class, 'index'])->name('especialista');
+            Route::get('add', [EspecialistaController::class, 'add'])->name('especialista.add');
+            Route::get('edit/{model}', [EspecialistaController::class, 'edit'])->name('especialista.edit');
+            Route::post('', [EspecialistaController::class, 'store'])->name('especialista.store');
+            Route::patch('{model}', [EspecialistaController::class, 'update'])->name('especialista.update');
+            Route::delete('{model}', [EspecialistaController::class, 'destroy'])->name('especialista.delete');
+        });
+    });
+
+    Route::prefix('catalogos')->group(function(){
+        Route::prefix('agendas')->group(function(){
+            Route::get('', [AgendaController::class, 'index'])->name('agenda');
+            Route::get('add', [AgendaController::class, 'add'])->name('agenda.add');
+            Route::get('edit/{model}', [AgendaController::class, 'edit'])->name('agenda.edit');
+            Route::post('', [AgendaController::class, 'store'])->name('agenda.store');
+            Route::patch('{model}', [AgendaController::class, 'update'])->name('agenda.update');
+            Route::delete('{model}', [AgendaController::class, 'destroy'])->name('agenda.delete');
         });
     });
 
