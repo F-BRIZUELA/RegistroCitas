@@ -80,21 +80,6 @@ Route::middleware('auth')->group(function(){
             Route::post('', [ReservaCitaController::class, 'store'])->name('reservacita.store');
             Route::patch('{model}', [ReservaCitaController::class, 'update'])->name('reservacita.update');
     });
-    Route::prefix('catalogos')->group(function(){
-      
-        Route::prefix('combustible')->group(function () {
-            Route::get('', [CombustibleController::class, 'index'])->name('combustible');
-            Route::get('add', [CombustibleController::class, 'add'])->name('combustible.add');
-            Route::post('', [CombustibleController::class, 'store'])->name('combustible.store');
-            Route::delete('{model}', [CombustibleController::class, 'destroy'])->name('combustible.delete');
-            Route::get('edit/{model}', [CombustibleController::class, 'show'])->name('combustible.edit');
-            Route::patch('{model}', [CombustibleController::class, 'update'])->name('combustible.update');
-        });
-        
-        Route::prefix('catalogos')->group(function () {
-            Route::get('combustible', [CatalogosController::class, 'getEspecialidades']);
-        });
-    });
 });
 
 
@@ -103,11 +88,10 @@ Rutas para catalogos de la api
 */
 Route::middleware('auth')->group(function(){
     Route::prefix('api-app')->group(function(){
-        Route::get('colores', [ApiAppsController::class, 'colores']);
-        Route::get('sexos', [ApiAppsController::class, 'sexos']);
-        Route::get('cooperativas', [ApiAppsController::class, 'cooperativas']);
-        Route::get('barrios', [ApiAppsController::class, 'barrios']);
-        Route::get('etnias', [ApiAppsController::class, 'etnias']);
+        Route::get('especialidad', [ApiAppsController::class, 'especialidad']);
+        Route::get('especialista', [ApiAppsController::class, 'especialista']);
+        Route::get('agenda', [ApiAppsController::class, 'agenda']);
+        Route::get('reservacita', [ApiAppsController::class, 'reservacita']);
     });
 });
 Auth::routes();

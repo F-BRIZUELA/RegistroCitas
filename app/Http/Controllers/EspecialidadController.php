@@ -6,7 +6,11 @@ use App\Models\Especialidad;
 use Illuminate\Http\Request;
 
 class EspecialidadController extends Controller
-{
+{  
+    public $rules = [
+        "especialidad" => ['required', 'string'],
+    ];
+
     public function index(Request $request)
     {
         $rows = Especialidad::query()
@@ -21,26 +25,23 @@ class EspecialidadController extends Controller
         return view('catalogos.especialidades.add');
     }
 
+    
     public function show(Especialidad $model)
     {
-        return view('catalogos.combustible.edit', compact('model'));
+        return view('catalogos.especialidades.edit',compact('model'));
     }
 
-    public function store(Request $request)
+    public function store(Request $request, Especialidad $model)
     {
-        $model = new Especialidad();
-
-        $model->especialidad = $request->especialidad;
-
-        $model->save();
-
+        //$campos=$this->validate($request,$this->rules);
+        $model=Especialidad::query()->create($request->all());
         return redirect()->route('especialidad');
     }
 
-    public function update(Especialidad $model, Request $request)
+    public function update(Especialidad $model,Request $request)
     {
-        $model->especialidad = $request->especialidad;
-
+        //$campos=$this->validate($request,$this->rules);
+        $model->fill($request->all());
         $model->save();
 
         return redirect()->route('especialidad');

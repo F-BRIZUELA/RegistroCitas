@@ -2,21 +2,20 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Barrio;
-use App\Models\Color;
-use App\Models\Cooperativa;
-use App\Models\Etnia;
-use App\Models\Sexo;
+use App\Models\Agenda;
+use App\Models\Especialidad;
+use App\Models\Especialista;
+use App\Models\ReservaCita;
 use Illuminate\Http\Request;
 
 class ApiAppsController extends Controller
 {
-    public function colores(Request $request)
+    public function especialidades(Request $request)
     {
-        $rows = Color::query()
+        $rows = Especialidad::query()
             ->when($request->buscar, function ($query) use ($request) {
                 $buscar = "%" . $request->buscar . "%";
-                $query->where('color', 'ilike', $buscar);
+                $query->where('especialidad', 'ilike', $buscar);
             })
             ->get();
         $data = [
@@ -25,12 +24,12 @@ class ApiAppsController extends Controller
         return response()->json($data, 200);
     }
 
-    public function cooperativas(Request $request)
+    public function especialistas(Request $request)
     {
-        $rows = Cooperativa::query()
+        $rows = Especialista::query()
             ->when($request->buscar, function ($query) use ($request) {
                 $buscar = "%" . $request->buscar . "%";
-                $query->where('cooperativa', 'ilike', $buscar);
+                $query->where('especialista', 'ilike', $buscar);
             })
             ->get();
         $data = [
@@ -39,12 +38,12 @@ class ApiAppsController extends Controller
         return response()->json($data, 200);
     }
 
-    public function barrios(Request $request)
+    public function agendas(Request $request)
     {
-        $rows = Barrio::query()
+        $rows = Agenda::query()
             ->when($request->buscar, function ($query) use ($request) {
                 $buscar = "%" . $request->buscar . "%";
-                $query->where('barrio', 'ilike', $buscar);
+                $query->where('agenda', 'ilike', $buscar);
             })
             ->get();
         $data = [
@@ -53,12 +52,12 @@ class ApiAppsController extends Controller
         return response()->json($data, 200);
     }
 
-    public function etnias(Request $request)
+    public function reservacitas(Request $request)
     {
-        $rows = Etnia::query()
+        $rows = ReservaCita::query()
             ->when($request->buscar, function ($query) use ($request) {
                 $buscar = "%" . $request->buscar . "%";
-                $query->where('etnia', 'ilike', $buscar);
+                $query->where('reservacita', 'ilike', $buscar);
             })
             ->get();
         $data = [
@@ -67,12 +66,12 @@ class ApiAppsController extends Controller
         return response()->json($data, 200);
     }
 
-    public function sexos()
+   /* public function sexos()
     {
         $rows = Sexo::all();
         $data = [
             'data' => $rows
         ];
         return response()->json($data, 200);
-    }
+    }*/
 }

@@ -17,7 +17,7 @@ class Agenda extends Model
         "especialistas_id",
     ];
 
-    public function agendas()
+    public function agenda()
     {
         return $this->hasOne(
             Especialista::class,

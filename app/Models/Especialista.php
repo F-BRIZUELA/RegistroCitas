@@ -31,4 +31,6 @@ class Especialista extends Model
             'especialidades_id'
         );
     }
+
+    
 }

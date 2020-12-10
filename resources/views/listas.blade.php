@@ -5,19 +5,19 @@
     {!! Form::open(['route' => 'listas']) !!}
 
     <div class="form-group">
-        <label for="exampleInputEmail1">Color</label>
-        <select-combustibles 
-        url="/api-app/colores" 
-        nombre="color_id" 
-        label="color" />
+        <label for="exampleInputEmail1">Especialidades</label>
+        <select-especialidades
+        url="/api-app/especialidades" 
+        nombre="especialidades_id" 
+        label="especialidades" />
     </div>
 
     <div class="form-group">
-        <label for="exampleInputEmail1">Sexo</label>
-        <select-combustibles 
-        url="/api-app/sexos" 
-        nombre="sexo_id" 
-        label="sexo_full" />
+        <label for="exampleInputEmail1">Especialistas</label>
+        <select-especialistas 
+        url="/api-app/especialistas" 
+        nombre="especialistas_id" 
+        label="espcialistas" />
     </div>
 
     <div class="form-group">

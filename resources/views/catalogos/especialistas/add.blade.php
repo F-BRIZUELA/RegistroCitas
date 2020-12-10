@@ -5,11 +5,11 @@
 
         <div class="card border-primary">
             <div class="card-body">
-                <h4 class="card-title">Datos de la especialista</h4>
+                <h4 class="card-title">Datos del especialista</h4>
                 <p class="card-text">
 
                     {!! Form::open(['route' => 'especialista.store']) !!}
-                    @include('catalogos.especialista.fields')
+                    @include('catalogos.especialistas.fields')
                     {!! Form::submit('Guardar') !!}
                     {!! Form::close() !!}
                 </p>

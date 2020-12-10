@@ -13,17 +13,18 @@ class EspecialistaController extends Controller
         "especialidades_id" => ['required', 'numeric'],
     ];
 
-    public function index()
+    public function index( Request $request)
     {
         $especialistas = Especialista::all();
-        return view('app.especialistas.index', compact("especialistas"));
+        
+        return view('catalogos.especialistas.index', compact("especialistas"));
     }
 
    
     public function add()
-    {     $model=false; 
-
-        return view('app.especialistas.add',compact("model"));
+    {  
+        $model=false; 
+        return view('catalogos.especialistas.add',compact('model'));
     }
 
    
@@ -43,7 +44,7 @@ class EspecialistaController extends Controller
 
     public function edit(Especialista $model)
     {
-        return view('app.especialistas.edit', compact('model'));
+        return view('catalogos.especialistas.edit', compact('model'));
     }
 
     public function update(Request $request, Especialista $model)
