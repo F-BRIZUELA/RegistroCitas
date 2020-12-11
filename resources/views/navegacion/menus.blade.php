@@ -9,6 +9,7 @@
     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
       <a class="dropdown-item" href="{!! route('especialidad') !!}">Especialidades</a>
       <a class="dropdown-item" href="{!! route('especialista') !!}">Especialistas</a>
+      <a class="dropdown-item" href="{!! route('agenda') !!}">Agendas</a>
     </div>
   </li>
   <li class="nav-item dropdown">

@@ -9,7 +9,7 @@
   <div class="card-body">
     <div class="row">
         <div class="col-12">
-            <a href="{!! route('reservacitas.add') !!}">
+            <a href="{!! route('reservacita.add') !!}">
                 Agregar</a>
         </div>
     </div>

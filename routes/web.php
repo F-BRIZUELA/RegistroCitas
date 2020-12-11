@@ -73,22 +73,19 @@ Route::middleware('auth')->group(function(){
     });
 
     Route::prefix('app')->group(function(){
-            Route::get('reservacitas', [ReservaCitaController::class, 'reservacita']);
             Route::get('', [ReservaCitaController::class, 'index'])->name('reservacita');
             Route::get('add', [ReservaCitaController::class, 'add'])->name('reservacita.add');
             Route::get('edit/{model}', [ReservaCitaController::class, 'show'])->name('reservacita.edit');
             Route::post('', [ReservaCitaController::class, 'store'])->name('reservacita.store');
             Route::patch('{model}', [ReservaCitaController::class, 'update'])->name('reservacita.update');
+            Route::delete('{model}', [AgendaController::class, 'destroy'])->name('reservacitas.delete');
     });
+
 });
 
-
-/*
-Rutas para catalogos de la api
-*/
 Route::middleware('auth')->group(function(){
     Route::prefix('api-app')->group(function(){
-        Route::get('especialidad', [ApiAppsController::class, 'especialidad']);
+        Route::get('especialidad', [ApiAppsController::class, 'especialidades']);
         Route::get('especialista', [ApiAppsController::class, 'especialista']);
         Route::get('agenda', [ApiAppsController::class, 'agenda']);
         Route::get('reservacita', [ApiAppsController::class, 'reservacita']);

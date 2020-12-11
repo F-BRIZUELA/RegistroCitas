@@ -15,14 +15,14 @@ class AgendaController extends Controller
     public function index()
     {
         $agendas = Agenda::all();
-        return view('app.agendas.index', compact("agendas"));
+        return view('catalogos.agendas.index', compact("agendas"));
     }
 
    
     public function add()
     {     $model=false; 
 
-        return view('app.agendas.add',compact("model"));
+        return view('catalogos.agendas.add',compact("model"));
     }
 
    
@@ -42,7 +42,7 @@ class AgendaController extends Controller
 
     public function edit(Agenda $model)
     {
-        return view('app.agendas.edit', compact('model'));
+        return view('catalogos.agendas.edit', compact('model'));
     }
 
     public function update(Request $request, Agenda $model)
